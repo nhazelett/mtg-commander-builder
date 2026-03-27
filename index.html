@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MTG Commander Deck Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">&#9876;</div>
+      <h1>Commander Deck Builder</h1>
+      <p class="subtitle">Budget decks powered by Scryfall + EDHREC data</p>
+    </header>
+
+    <form id="deck-form">
+      <div class="search-bar">
+        <input
+          type="text"
+          id="commander-input"
+          placeholder="Enter a commander name (e.g. Krenko, Mob Boss)"
+          autocomplete="off"
+          required
+        />
+        <button type="submit" id="generate-btn">
+          <span class="btn-text">Build Deck</span>
+          <span class="btn-loading" hidden>
+            <span class="spinner"></span> Brewing...
+          </span>
+        </button>
+      </div>
+    </form>
+
+    <div id="error-msg" class="error" hidden></div>
+
+    <div id="loading" class="loading-overlay">
+      <div class="loading-icon">&#9876;</div>
+      <div class="loading-text">Brewing your deck...</div>
+      <div class="loading-sub">Searching Scryfall for the best budget cards</div>
+    </div>
+
+    <div id="deck-result" hidden>
+      <div class="deck-header">
+        <div class="deck-header-left">
+          <img id="commander-img" class="commander-art" src="" alt="" />
+          <div class="deck-title">
+            <h2 id="deck-commander"></h2>
+            <span id="deck-colors" class="color-pips"></span>
+          </div>
+        </div>
+        <div class="deck-meta">
+          <div class="meta-item">
+            <span class="meta-label">Cards</span>
+            <span id="deck-count" class="meta-value"></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Budget</span>
+            <span id="deck-budget" class="meta-value"></span>
+          </div>
+        </div>
+      </div>
+
+      <p id="deck-strategy" class="strategy"></p>
+
+      <div id="deck-categories" class="categories"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
