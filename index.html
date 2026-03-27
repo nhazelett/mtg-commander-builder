@@ -3,41 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MTG Commander Deck Builder</title>
+  <title>Austin's Arcane Armory — Commander Deck Builder</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>" />
 </head>
 <body>
+  <div class="page-bg"></div>
+
+  <nav class="topnav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span class="nav-icon">🔮</span>
+        <span class="nav-title">Austin's Arcane Armory</span>
+      </div>
+      <div class="nav-links">
+        <span class="nav-link active">Deck Builder</span>
+        <span class="nav-link">About</span>
+      </div>
+    </div>
+  </nav>
+
   <div class="app">
     <header>
-      <div class="logo">&#9876;</div>
-      <h1>Commander Deck Builder</h1>
-      <p class="subtitle">Budget decks powered by Scryfall + EDHREC data</p>
+      <div class="hero-badge">COMMANDER FORMAT</div>
+      <h1>Austin's Arcane Armory</h1>
+      <p class="tagline">Where budget brews become battlefield legends.</p>
+      <p class="subtitle">Type a commander name below. We'll forge you a 100-card deck using the most popular cards in EDH — all under $3 each.</p>
     </header>
 
     <form id="deck-form">
       <div class="search-bar">
+        <div class="search-icon">&#128269;</div>
         <input
           type="text"
           id="commander-input"
-          placeholder="Enter a commander name (e.g. Krenko, Mob Boss)"
+          placeholder="Search for a commander..."
           autocomplete="off"
           required
         />
         <button type="submit" id="generate-btn">
-          <span class="btn-text">Build Deck</span>
+          <span class="btn-text">Forge Deck</span>
           <span class="btn-loading" hidden>
-            <span class="spinner"></span> Brewing...
+            <span class="spinner"></span> Forging...
           </span>
         </button>
+      </div>
+      <div class="suggestions">
+        Try: <button type="button" class="suggestion" data-name="krenko">Krenko</button>
+        <button type="button" class="suggestion" data-name="atraxa">Atraxa</button>
+        <button type="button" class="suggestion" data-name="ur-dragon">The Ur-Dragon</button>
+        <button type="button" class="suggestion" data-name="muldrotha">Muldrotha</button>
+        <button type="button" class="suggestion" data-name="edgar markov">Edgar Markov</button>
       </div>
     </form>
 
     <div id="error-msg" class="error" hidden></div>
 
     <div id="loading" class="loading-overlay">
-      <div class="loading-icon">&#9876;</div>
-      <div class="loading-text">Brewing your deck...</div>
-      <div class="loading-sub">Searching Scryfall for the best budget cards</div>
+      <div class="loading-icon">🔮</div>
+      <div class="loading-text">The Armory is forging your deck...</div>
+      <div class="loading-sub">Consulting the Scryfall archives &amp; EDHREC wisdom</div>
+      <div class="loading-bar"><div class="loading-bar-fill"></div></div>
     </div>
 
     <div id="deck-result" hidden>
@@ -45,18 +71,20 @@
         <div class="deck-header-left">
           <img id="commander-img" class="commander-art" src="" alt="" />
           <div class="deck-title">
+            <div class="deck-label">YOUR COMMANDER</div>
             <h2 id="deck-commander"></h2>
             <span id="deck-colors" class="color-pips"></span>
           </div>
         </div>
-        <div class="deck-meta">
-          <div class="meta-item">
-            <span class="meta-label">Cards</span>
-            <span id="deck-count" class="meta-value"></span>
+        <div class="deck-stats">
+          <div class="stat">
+            <span class="stat-value" id="deck-count"></span>
+            <span class="stat-label">Cards</span>
           </div>
-          <div class="meta-item">
-            <span class="meta-label">Budget</span>
-            <span id="deck-budget" class="meta-value"></span>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-value" id="deck-budget"></span>
+            <span class="stat-label">Total Cost</span>
           </div>
         </div>
       </div>
@@ -64,8 +92,16 @@
       <p id="deck-strategy" class="strategy"></p>
 
       <div id="deck-categories" class="categories"></div>
+
+      <div class="deck-footer">
+        <p>Forged with care at <strong>Austin's Arcane Armory</strong>. Prices via Scryfall. Popularity via EDHREC.</p>
+      </div>
     </div>
   </div>
+
+  <footer class="site-footer">
+    <p>Austin's Arcane Armory &copy; 2026 &mdash; Not affiliated with Wizards of the Coast. Card data from <a href="https://scryfall.com" target="_blank">Scryfall</a>.</p>
+  </footer>
 
   <script src="app.js"></script>
 </body>

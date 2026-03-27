@@ -202,6 +202,14 @@ async function buildDeck(commander) {
   };
 }
 
+// --- Suggestion buttons ---
+document.querySelectorAll(".suggestion").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    input.value = btn.dataset.name;
+    form.dispatchEvent(new Event("submit", { cancelable: true }));
+  });
+});
+
 // --- Form handler ---
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -272,7 +280,7 @@ function renderDeck(deck) {
     header.className = "category-header";
     header.innerHTML = `
       <span class="category-name">${esc(cat.name)}</span>
-      <span class="category-count">${catTotal}</span>
+      <span><span class="category-count">${catTotal}</span><span class="chevron">&#9662;</span></span>
     `;
     header.addEventListener("click", () => section.classList.toggle("collapsed"));
 
